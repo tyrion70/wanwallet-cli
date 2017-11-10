@@ -1,4 +1,4 @@
-async function sendTransaction(web3, Tx, receiver_address,sender_address, privKeyA, value) {
+function sendTransaction(web3, Tx, receiver_address,sender_address, privKeyA, value) {
 
 	var serial = '0x' + web3.eth.getTransactionCount(sender_address).toString(16);
 	var rawTx = {
@@ -14,7 +14,7 @@ async function sendTransaction(web3, Tx, receiver_address,sender_address, privKe
 
 	tx.sign(privKeyA);
 	var serializedTx = tx.serialize();
-	let hash = web3.eth.sendRawTransaction('0x' + serializedTx.toString('hex'));
+	web3.eth.sendRawTransaction('0x' + serializedTx.toString('hex'));
 }
 
 module.exports = sendTransaction;
