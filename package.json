@@ -17,5 +17,13 @@
     "wanchain"
   ],
   "author": "wanchain",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^2.8.0",
+    "optimist": "^0.6.1",
+    "sleep": "^5.1.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
 }
