@@ -7,10 +7,11 @@ function getKeystore(keystoreName, keystorePass) {
     var keystoreStrFrom = fs.readFileSync(filenameFrom, "utf8");
     var keystoreFrom = JSON.parse(keystoreStrFrom)[1];
     var address = keystoreFrom.address;
+    var waddress = keystoreFrom.waddress;
 
     var keyAObj = {version:keystoreFrom.version, crypto:keystoreFrom.crypto};
     var privateKey = keythereum.recover(keystorePass, keyAObj);
-	return { address, privateKey }
+	return { address, privateKey, waddress }
 }
 
 module.exports = getKeystore;

@@ -14,7 +14,7 @@ web3.wan = new wanUtil.web3Wan(web3);
 describe('Getting balances', function() {
 
   it('The balance of an address is 84', function() {
-    var keystoreName = 'keystore1';
+    var keystoreName = 'keystore';
     var keystorePass = '1234ab';
     var balance='84';
 

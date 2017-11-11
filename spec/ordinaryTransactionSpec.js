@@ -1,11 +1,9 @@
-const fs = require('fs');
 const wanUtil = require('wanchain-util');
 const Web3 = require("web3");
 const sendTransaction = require('./helpers/sendTransaction');
 const checkBalance = require('./helpers/checkBalance');
 const getKeystore = require('./helpers/getKeystore');
 const Tx = require('wanchain-util').ethereumTx;
-const keythereum = require("keythereum");
 const execSync = require('child_process').execSync;
 const config = require('../config');
 const web3 = new Web3(new Web3.providers.HttpProvider( config.host + ":8545"));
