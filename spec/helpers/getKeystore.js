@@ -3,15 +3,15 @@ const keythereum = require("keythereum");
 
 function getKeystore(keystoreName, keystorePass) {
 
-    var filenameFrom = "./src/keystore/" + keystoreName + ".json";
-    var keystoreStrFrom = fs.readFileSync(filenameFrom, "utf8");
-    var keystoreFrom = JSON.parse(keystoreStrFrom)[1];
-    var address = keystoreFrom.address;
-    var waddress = keystoreFrom.waddress;
+    let filenameFrom = "./src/keystore/" + keystoreName + ".json";
+    let keystoreStrFrom = fs.readFileSync(filenameFrom, "utf8");
+    let keystoreFrom = JSON.parse(keystoreStrFrom)[1];
+    let address = keystoreFrom.address;
+    let waddress = keystoreFrom.waddress;
 
-    var keyAObj = {version:keystoreFrom.version, crypto:keystoreFrom.crypto};
-    var privateKey = keythereum.recover(keystorePass, keyAObj);
-	return { address, privateKey, waddress }
+    let keyAObj = {version:keystoreFrom.version, crypto:keystoreFrom.crypto};
+    let privateKey = keythereum.recover(keystorePass, keyAObj);
+	return { address, privateKey, waddress };
 }
 
 module.exports = getKeystore;

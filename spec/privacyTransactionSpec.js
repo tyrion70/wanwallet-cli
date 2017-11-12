@@ -5,8 +5,8 @@ const execSync = require('child_process').execSync;
 const checkBalance = require('./helpers/checkBalance');
 const getKeystore = require('./helpers/getKeystore');
 const preScTransfer = require('./helpers/preScTransfer');
-const wanchainLog = require('../utils/wanchainLog');
-var coinSCDefinition = wanUtil.coinSCAbi;
+//const wanchainLog = require('../utils/wanchainLog');
+const coinSCDefinition = wanUtil.coinSCAbi;
 
 const web3 = new Web3(new Web3.providers.HttpProvider( config.host + ":8545"));
 
@@ -16,24 +16,24 @@ describe('Privacy transfer to account', function() {
 
     it('A private transfer to an account adds wancoin to the other account', function() {
 
-        var transferAmount = 5;
-        var keystoreFromName = 'keystore2';
-        var keystoreToName = 'keystore3';
-        var keystorePass = '1234ab';
+        let transferAmount = 5;
+        let keystoreFromName = 'keystore2';
+        let keystoreToName = 'keystore3';
+        let keystorePass = '1234ab';
 
-        var keystoreFrom = getKeystore(keystoreFromName, keystorePass);
-        var keystoreTo = getKeystore(keystoreToName, keystorePass);
+        let keystoreFrom = getKeystore(keystoreFromName, keystorePass);
+        let keystoreTo = getKeystore(keystoreToName, keystorePass);
 
-        var addressTo = keystoreTo.waddress;
-        var addressFrom = keystoreFrom.address;
-        var privateKey = keystoreFrom.privateKey;
+        let addressTo = keystoreTo.waddress;
+        let addressFrom = keystoreFrom.address;
+        let privateKey = keystoreFrom.privateKey;
 
-        var balanceFromStart = parseInt(checkBalance(web3, addressFrom));
+        let balanceFromStart = parseInt(checkBalance(web3, addressFrom));
 
-        var contractInstanceAddress = config.contractInstanceAddress;
-        var contractCoinSC = web3.eth.contract(coinSCDefinition);
-        var contractCoinInstance = contractCoinSC.at(contractInstanceAddress);
-        var value = parseInt(transferAmount) * 10**18;
+        let contractInstanceAddress = config.contractInstanceAddress;
+        let contractCoinSC = web3.eth.contract(coinSCDefinition);
+        let contractCoinInstance = contractCoinSC.at(contractInstanceAddress);
+        let value = parseInt(transferAmount) * 10**18;
 
         //wanchainLog('balanceFrom ' + balanceFromStart);
 
@@ -41,7 +41,7 @@ describe('Privacy transfer to account', function() {
         execSync('sleep 30', function(err,stdout,stderr) {
         });
 
-        var balanceFromEnd = parseInt(checkBalance(web3, addressFrom));
+        let balanceFromEnd = parseInt(checkBalance(web3, addressFrom));
 
         //wanchainLog('balanceFrom ' + balanceFromEnd);
 
@@ -50,24 +50,24 @@ describe('Privacy transfer to account', function() {
     /* DOESNT WORK CONTRACT DOESNT FAIL
     it('A private transfer with the wrong amount fails', function() {
 
-        var transferAmount = 6;
-        var keystoreFromName = 'keystore2';
-        var keystoreToName = 'keystore3';
-        var keystorePass = '1234ab';
+        let transferAmount = 6;
+        let keystoreFromName = 'keystore2';
+        let keystoreToName = 'keystore3';
+        let keystorePass = '1234ab';
 
-        var keystoreFrom = getKeystore(keystoreFromName, keystorePass);
-        var keystoreTo = getKeystore(keystoreToName, keystorePass);
+        let keystoreFrom = getKeystore(keystoreFromName, keystorePass);
+        let keystoreTo = getKeystore(keystoreToName, keystorePass);
 
-        var addressTo = keystoreTo.waddress;
-        var addressFrom = keystoreFrom.address;
-        var privateKey = keystoreFrom.privateKey;
+        let addressTo = keystoreTo.waddress;
+        let addressFrom = keystoreFrom.address;
+        let privateKey = keystoreFrom.privateKey;
 
-        var balanceFromStart = parseInt(checkBalance(web3, addressFrom));
+        let balanceFromStart = parseInt(checkBalance(web3, addressFrom));
 
-        var contractInstanceAddress = config.contractInstanceAddress;
-        var contractCoinSC = web3.eth.contract(coinSCDefinition);
-        var contractCoinInstance = contractCoinSC.at(contractInstanceAddress);
-        var value = parseInt(transferAmount) * 10**18;
+        let contractInstanceAddress = config.contractInstanceAddress;
+        let contractCoinSC = web3.eth.contract(coinSCDefinition);
+        let contractCoinInstance = contractCoinSC.at(contractInstanceAddress);
+        let value = parseInt(transferAmount) * 10**18;
 
         wanchainLog('balanceFrom ' + balanceFromStart);
 
@@ -75,7 +75,7 @@ describe('Privacy transfer to account', function() {
         execSync('sleep 30', function(err,stdout,stderr) {
         });
 
-        var balanceFromEnd = parseInt(checkBalance(web3, addressFrom));
+        let balanceFromEnd = parseInt(checkBalance(web3, addressFrom));
 
         wanchainLog('balanceFrom ' + balanceFromEnd);
 

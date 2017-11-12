@@ -14,12 +14,12 @@ web3.wan = new wanUtil.web3Wan(web3);
 describe('Getting balances', function() {
 
   it('The balance of an address is 84', function() {
-    var keystoreName = 'keystore';
-    var keystorePass = '1234ab';
-    var balance='84';
+    let keystoreName = 'keystore';
+    let keystorePass = '1234ab';
+    let balance='84';
 
-    var keystore = getKeystore(keystoreName,keystorePass);
-    var weiToEth = checkBalance(web3, keystore.address);
+    let keystore = getKeystore(keystoreName,keystorePass);
+    let weiToEth = checkBalance(web3, keystore.address);
 
     expect(weiToEth).toBe(balance);
   });

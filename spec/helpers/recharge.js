@@ -10,7 +10,7 @@ web3.wan = new wanUtil.web3Wan(web3);
 
 function recharge(address) {
 
-    var cmdStr;
+    let cmdStr;
     cmdStr = 'curl -d "userAddr=' + address + '" ' + config.host + ':3000/faucet';
     exec(cmdStr, function(err,stdout,stderr){
 
